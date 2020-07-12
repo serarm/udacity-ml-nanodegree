@@ -1,6 +1,6 @@
 # udacity-ml-nanodegree
 
-## [TERM1](term1)
+## [MACHINE LEARNING FOUNDAIONS : TERM1](term1)
 
 Contains projects and exercises completed as part of Udacity's Machine Learning Nanodegree TERM1 during 2018: [Machine Learning Foundations](https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009t).
 
