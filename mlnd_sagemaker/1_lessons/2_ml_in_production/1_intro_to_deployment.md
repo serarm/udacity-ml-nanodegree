@@ -101,10 +101,10 @@ Communication between the application and the model is done through the endpoint
 ## Characteristics of Deployment and Modelling
 
 Deployment to production can simply be thought of as a method that integrates a machine learning model into an existing production environment so that the model can be used to make decisions or predictions based upon data input into this model. 
-![Characteristics of Modelling](mlworkflow-modeling-hyperparameter.png)
+![Characteristics of Modelling](img/mlworkflow-modeling-hyperparameter.png)
 `Hyperparameters` : In machine learning, a hyperparameter is a parameter whose value cannot be estimated from the data. 
 
-![Characteristics of Deployment](mlworkflow-deployment-chars.png)
+![Characteristics of Deployment](img/mlworkflow-deployment-chars.png)
 
 1. `Model Versioning`: Besides saving the model version as a part of a model’s metadata in a database, the deployment platform should allow one to indicate a deployed model’s version.This will make it easier to maintain, monitor, and update the deployed model.
 2. `Model Monitoring`:Once a model is deployed you will want to make certain it continues to meet its performance metrics; otherwise, the application may need to be updated with a better performing model. 
