@@ -82,7 +82,53 @@ Communication between the application and the model is done through the endpoint
 - Message (Data or Body)
   - What’s returned as the data within the message is the prediction that’s provided by the model.
 
+## Models, Apllications and Containers
 
+- The `model` is simply the Python model that's created, trained, and evaluated in the Modeling component of the machine learning workflow.
+- The `application` is simply a web or software application that enables the application users to use the model to retrieve predictions.
+- The model and the application require a computing environment.One way to create and maintain these computing environments is through the use of `containers`.The `containers` are created using a script that contains instructions on which software packages, libraries, and other computing attributes are needed in order to run a software application, in our case either the model or the application. `A container can be thought of as a standardized collection/bundle of software that is to be used for the specific purpose of running an application.`A common container software is Docker. Due to its popularity sometimes Docker is used synonymously with containers.
+
+
+![Containers](img/container-2.png)
+
+### Advantages of containers
+
+1. Isolates the application, which increases security.
+2. Requires only software needed to run the application, which uses computational resources more efficiently and allows for faster application deployment.
+3. Makes application creation, replication, deletion, and maintenance easier and the same across all applications that are deployed using containers.
+4. Provides a more simple and secure way to replicate, save, and share containers.
+
+## Characteristics of Deployment and Modelling
+
+Deployment to production can simply be thought of as a method that integrates a machine learning model into an existing production environment so that the model can be used to make decisions or predictions based upon data input into this model. 
+![Characteristics of Modelling](mlworkflow-modeling-hyperparameter.png)
+`Hyperparameters` : In machine learning, a hyperparameter is a parameter whose value cannot be estimated from the data. 
+
+![Characteristics of Deployment](mlworkflow-deployment-chars.png)
+
+1. `Model Versioning`: Besides saving the model version as a part of a model’s metadata in a database, the deployment platform should allow one to indicate a deployed model’s version.This will make it easier to maintain, monitor, and update the deployed model.
+2. `Model Monitoring`:Once a model is deployed you will want to make certain it continues to meet its performance metrics; otherwise, the application may need to be updated with a better performing model. 
+3. `Model Updating and Routing` :Model need to be updated if a deployed model is failing to meet its performance metrics or here's been a fundamental change in the data that’s being input into the model for predictions.*The deployment platform should support routing differing proportions of user requests to the deployed models*; to allow comparison of performance between the deployed model variants. 
+4. `Model Prediction` :There are two common types of predictions:
+    1. On-demand predictions
+    2. Batch predictions
+### Online Prediction
+- `On-demand predictions` might also be called:
+    - online,
+    - real-time, or
+    - synchronous predictions
+- With these type of predictions, one expects:
+  - A low latency of response to each prediction request,but allows for possibility high variability in request volume.
+  - Predictions are returned in the response from the request. Often these requests and responses are done through an API using JSON or XML formatted strings.
+  - Each prediction request from the user can contain one or many requests for predictions. Noting that many is limited based upon the size of the data sent as the request. Common cloud platforms on-demand prediction request size limits can range from 1.5(ML Engine) to 5 Megabytes (SageMaker).
+### Batch Prediction
+- Batch predictions might also be called:
+  - asynchronous, or
+  - batch-based predictions.
+- With these type of predictions, one expects:
+  - High volume of requests with more periodic submissions so latency won’t be an issue.
+  - Each batch request will point to specifically formatted data file of requests and will return the predictions to a file. Cloud services require these files will be stored in the cloud provider’s cloud.
+  - Cloud services typically have limits to how much data they can process with each batch request based upon limits they impose on the size of file you can store in their cloud storage service. For example, Amazon’s SageMaker limits batch predictions requests to the size limit they enforce on an object in their S3 storage service.
 
 
 
